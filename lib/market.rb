@@ -17,12 +17,10 @@ class Market
   end
 
   def vendors_that_sell(string_search)
-    vendor_inventory = @vendors.group_by do |vendor, items|
-      vendor, items
-    end
-    binding.pry
-    vendor_inverntory.select do |vendor|
-      vendor_items =~ /#{string_search}/
+    @vendors.select do |vendor|
+      vendor.inventory.any? do |item|
+        item[0] =~ /#{string_search}/
+      end
     end
   end
 end

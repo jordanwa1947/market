@@ -61,8 +61,9 @@ class MarketTest < Minitest::Test
     vendor_1.stock("Banana Nice Cream", 50)
     vendor_2.stock("Peach-Raspberry Nice Cream", 25)
     vendor_3.stock("Peaches", 65)
+    vendor_1.stock("Peaches", 35)
 
-    assert_equal [vendor_2, vendor_3], market.vendors_that_sell('Peaches')
-    assert_equal [vendor_1], market.vendors_that_sell('Peaches')
+    assert_equal [vendor_1, vendor_3], market.vendors_that_sell('Peaches')
+    assert_equal [vendor_1], market.vendors_that_sell("Banana Nice Cream")
   end
 end
